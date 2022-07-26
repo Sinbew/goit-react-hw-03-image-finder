@@ -1,6 +1,7 @@
 import { Component } from 'react';
 import styles from './Modal.module.css';
 import PropTypes from 'prop-types';
+
 export class Modal extends Component {
   static propTypes = {
     image: PropTypes.string.isRequired,
@@ -9,9 +10,11 @@ export class Modal extends Component {
 
   componentDidMount() {
     window.addEventListener('keydown', this.onClose);
+    document.body.classList.add('no-scroll');
   }
   componentWillUnmount() {
     window.removeEventListener('keydown', this.onClose);
+    document.body.classList.remove('no-scroll');
   }
 
   onClose = event => {
